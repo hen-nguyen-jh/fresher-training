@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Load the `mapbox-gl` package. -->
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet" />
+
+  <!-- Load the `mapbox-gl-directions` plugin. -->
+  <script
+    src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.2.0/mapbox-gl-directions.js"></script>
+  <link rel="stylesheet"
+    href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.2.0/mapbox-gl-directions.css"
+    type="text/css" />
+
+  <!-- Load the `mapbox-gl-geocoder` plugin. -->
+  <script
+    src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+  <link rel="stylesheet"
+    href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css"
+    type="text/css" />
+
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+
+  <title>Mapbox SDKs</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="info-tab info-tab--close none">
+      <div class="info-tab__header">
+        <div class="info-tab__header-label">
+          <p class="info-tab__section__title">Search Results</p>
+          <button class="info-tab__header-label__close-button">X</button>
+        </div>
+        <h1 class="info-tab__header__name">
+          <h1 />
+      </div>
+      <div class="info-tab__body">
+        <p class="info-tab__section__title">Place information</p>
+        <div class="body-info-container">
+          <p class="body-info-title">Coordinates</p>
+          <div class="info-tab__body__coords"></div>
+        </div>
+        <div class="body-info-container">
+          <p class="body-info-title">Place full name</p>
+          <div class="info-tab__body__text"></div>
+        </div>
+        <div class="body-info-container">
+          <p class="body-info-title">Place type</p>
+          <div class="info-tab__body__place-type"></div>
+        </div>
+        <div class="body-info-container">
+          <p class="body-info-title">Address</p>
+          <div class="info-tab__body__address"></div>
+        </div>
+        <div class="body-info-container">
+          <p class="body-info-title">Category</p>
+          <div class="info-tab__body__category"></div>
+        </div>
+      </div>
+    </div>
+    <div id="map">
+      <div id="search-box">
+        <input type="text" placeholder="Search">
+        <ul>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

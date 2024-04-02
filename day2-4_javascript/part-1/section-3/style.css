@@ -1,0 +1,99 @@
+body {
+  font-size: large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding: 40px;
+}
+input,
+button:not(#start-button) {
+  margin-left: 8px;
+}
+:root {
+  --border-radius: 8px;
+  --black: rgba(0, 0, 0, 0.8);
+  --black-faint: rgba(0, 0, 0, 0.2);
+  --black-near-transparent: rgba(0, 0, 0, 0.1);
+  --shadow: 4px 4px 4px var(--black-near-transparent);
+}
+
+input,
+button {
+  min-height: 32px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--black);
+  box-shadow: var(--shadow);
+  transition: 0.3s;
+}
+button:hover {
+  cursor: pointer;
+  background-color: var(--black-faint);
+}
+input {
+  padding: 0 12px;
+}
+
+#initContainer {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+}
+#initContainer > input {
+  width: 320px;
+  padding: 8px 12px;
+}
+#initContainer > button {
+  padding: 8px 20px;
+}
+
+#tree-displayer {
+}
+
+div.horizontal-seperator {
+  height: 1px;
+  background-color: black;
+  margin: 12px 0;
+}
+
+.title {
+  font-weight: bold;
+  font-size: x-large;
+}
+#play-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+#start-button {
+  padding: 8px 20px;
+}
+
+.tree-question,
+.tree-answer {
+  padding: 0 12px;
+  border: 1px solid black;
+  border-radius: 8px;
+
+  color: white;
+  transition: 0.3s;
+}
+.tree-question {
+  background-color: crimson;
+}
+.tree-answer {
+  background-color: green;
+}
+.tree-question:hover,
+.tree-answer {
+  cursor: pointer;
+}
+.tree-question:hover {
+  background-color: darkred;
+}
+.tree-answer:hover {
+  background-color: darkgreen;
+}
+#current-answers-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

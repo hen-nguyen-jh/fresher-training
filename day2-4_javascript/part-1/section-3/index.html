@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="initContainer">
+    <input type="text" placeholder="Enter your initial question" id="input-first-question" />
+    <button id="init-button">Initialize Decision Tree</button>
+    <button id="reset-button">Reset</button>
+  </div>
+
+  <div id="tree-displayer"></div>
+
+  <div class="horizontal-seperator"></div>
+
+  <div id="play-container">
+    <button id="start-button">START</button>
+
+    <div class="title">Question</div>
+    <span id="current-question=container">
+      <span id="current-question-value-displayer">No question init yet</span>
+      <button id="current-question-previous-button">Previous Question</button>
+    </span>
+    <div id="answer-title" class="title" style="display: none">Answers</div>
+    <ul id="current-answers-container"></ul>
+  </div>
+
+  <script type="module" src="script.js"></script>
+</body>
+
+</html>

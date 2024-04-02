@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-size: x-large;
+  font-family: 'Courier New', Courier, monospace;
+  text-wrap: nowrap;
+}
+main {
+  display: flex;
+  gap: 12px;
+  /* center v and h without flex */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+.title {
+  font-weight: 800;
+}
+.validatorStatus {
+  border-radius: 12px;
+  margin-left: 20px;
+  padding: 8px 12px;
+  color: white;
+  background-color: crimson;
+}
+.validatorContainer {
+  width: fit-content;
+}
+.input {
+  width: 100%;
+  border-radius: 12px;
+  margin-top: 12px;
+  padding: 8px 12px;
+}
+
+.seperator {
+  width: 2px;
+  border-radius: 2px;
+  background: black;
+}
