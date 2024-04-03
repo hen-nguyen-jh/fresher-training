@@ -1,3 +1,5 @@
+let selectedMethod = 'loop';
+
 let methodUsed = 'None';
 let numbersInput = '';
 let numbers = [1, 2, 2, 3, 4, 4, 4, 5, 6];
@@ -70,11 +72,44 @@ function onSubmit() {
 }
 
 function process() {
-  // result = removeDuplicateWithLoop(numbers);
-  // result = removeDuplicateWithSet(numbers);
-  // result = removeDuplicateWithIndexOf(numbers);
-  result = removeDuplicateWithObject(numbers);
+  result = removeDuplicate(numbers, selectedMethod);
 }
+
+const REMOVE_DUPLICATE_METHOD = {
+  LOOP: 'loop',
+  SET: 'set',
+  INDEX_OF: 'indexOf',
+  OBJECT: 'object',
+};
+// make the object immutable
+Object.freeze(REMOVE_DUPLICATE_METHOD);
+function removeDuplicate(numbers, method) {
+  switch (method) {
+    case REMOVE_DUPLICATE_METHOD.LOOP:
+      return removeDuplicateWithLoop(numbers);
+    case REMOVE_DUPLICATE_METHOD.SET:
+      return removeDuplicateWithSet(numbers);
+    case REMOVE_DUPLICATE_METHOD.INDEX_OF:
+      return removeDuplicateWithIndexOf(numbers);
+    case REMOVE_DUPLICATE_METHOD.OBJECT:
+      return removeDuplicateWithObject(numbers);
+    default:
+      throw new Error('Invalid method');
+  }
+}
+
+const methodSelects = document.querySelectorAll('.method-item');
+methodSelects.forEach((methodSelect) => {
+  methodSelect.addEventListener('click', () => {
+    selectedMethod = methodSelect.getAttribute('data-method');
+    methodSelects.forEach((methodSelect) => {
+      methodSelect.classList.remove('active');
+    });
+    methodSelect.classList.add('active');
+    process();
+    render();
+  });
+});
 
 // Run
 process();

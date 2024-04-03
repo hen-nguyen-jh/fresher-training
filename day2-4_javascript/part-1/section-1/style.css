@@ -37,6 +37,11 @@ main {
   background-color: crimson;
   font-size: large;
   color: white;
+  transition: 0.3s;
+}
+#submit:hover {
+  cursor: pointer;
+  background-color: rgba(220, 20, 60, 0.8);
 }
 
 #method {
@@ -75,4 +80,29 @@ main {
 #remove-duplicate-container {
   grid-row: 2 / 3;
   grid-column: 2 / 3;
+}
+
+#method-select > .method-item {
+  float: left;
+  padding: 20px;
+
+  width: 160px;
+  margin-right: 20px;
+
+  font-size: 24px;
+  border: 2px solid black;
+
+  transition: 0.3s;
+}
+#method-select > .method-item:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+#method-select > .method-item:last-child {
+  margin-right: 0;
+}
+
+#method-select > .method-item.active {
+  background-color: dodgerblue;
+  color: white;
 }
