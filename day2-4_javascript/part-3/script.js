@@ -1,24 +1,38 @@
-let currentSlide = 0;
+const mainPhotos = document.querySelectorAll('.main-photo');
+const smallPhotos = document.querySelectorAll('.small-photo');
 
-const slides = document.getElementById('slides');
-const prevButton = document.querySelector('#prevButton');
-const nextButton = document.querySelector('#nextButton');
+let currentPhoto = 0;
 
-nextButton.addEventListener('click', () => {
-  if (currentSlide < 2) {
-    currentSlide += 1;
-  } else {
-    currentSlide = 0;
-  }
-  console.log('next', currentSlide);
-  slides.style.transform = `translateX(calc(${currentSlide} * (-1 * (100%) / 3)))`;
+mainPhotos[currentPhoto].classList.add('selected');
+smallPhotos[currentPhoto].classList.add('selected');
+
+const nextBtn = document.querySelector('.navigate.next');
+const prevBtn = document.querySelector('.navigate.prev');
+
+nextBtn.addEventListener('click', nextPhoto);
+prevBtn.addEventListener('click', prevPhoto);
+
+smallPhotos.forEach((photo, index) => {
+  photo.addEventListener('click', () => selectPhoto(index));
 });
-prevButton.addEventListener('click', () => {
-  if (currentSlide > 0) {
-    currentSlide -= 1;
-  } else {
-    currentSlide = 2;
-  }
-  console.log('prev', currentSlide);
-  slides.style.transform = `translateX(calc(${currentSlide} * (-1 * (100%) / 3)))`;
-});
+
+function selectPhoto(index) {
+  selectMainPhoto(index);
+  selectSmallPhoto(index);
+  currentPhoto = index;
+}
+function selectMainPhoto(index) {
+  mainPhotos[currentPhoto].classList.remove('fade-out');
+  mainPhotos[currentPhoto].classList.remove('selected');
+  mainPhotos[index].classList.add('selected');
+}
+function selectSmallPhoto(index) {
+  smallPhotos[currentPhoto].classList.remove('selected');
+  smallPhotos[index].classList.add('selected');
+}
+function nextPhoto() {
+  selectPhoto((currentPhoto + 1) % mainPhotos.length);
+}
+function prevPhoto() {
+  selectPhoto((currentPhoto - 1 + mainPhotos.length) % mainPhotos.length);
+}

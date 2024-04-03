@@ -1,23 +1,43 @@
+const createMapWrapper = () => {
+  let map;
+
+  return {
+    getMap: () => map,
+    setMap: (newMap) => {
+      if (!newMap) {
+        console.log(`Can't set map to null value`);
+        return;
+      }
+      if (!map) {
+        map = newMap;
+      }
+    },
+  };
+};
+
+const wrapper = createMapWrapper();
+
 mapboxgl.accessToken =
   'pk.eyJ1IjoiaGVuLW5ndXllbi1qaCIsImEiOiJjbHVnb2RnZHMyMGRvMmtueTdnZGhpYzg3In0.yyk3sh5xRg4IvYL6LZ92Ug';
 
-let map = null;
 navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
   enableHighAccuracy: true,
 });
 
 function successLocation(position) {
-  map = setupMapbox({
+  const map = setupMapbox({
     latitude: position.coords.latitude,
     longitude: position.coords.longitude,
   });
+  wrapper.setMap(map);
 }
 
 function errorLocation(error) {
-  map = setupMapbox({
+  const map = setupMapbox({
     latitude: 0,
     longitude: 0,
   });
+  wrapper.setMap(map);
 }
 
 let isInfoTabOpen = false;
@@ -58,6 +78,33 @@ function setupMapbox(coords) {
   // Marker
   addMarkers(map);
 
+  // add marker on click
+  map.on('click', (event) => {
+    // test feature
+    const markerInfo = {
+      title: 'Test title',
+      // make a long descriptoin
+      description: 'This is my description',
+    };
+
+    // create a HTML element for each feature
+    const el = document.createElement('div');
+    el.className = 'marker';
+
+    const coords = event.lngLat;
+
+    const marker = new mapboxgl.Marker(el).setLngLat(coords).setPopup(
+      new mapboxgl.Popup({ offset: 25 }) // add popups
+        .setHTML(`<h3>${markerInfo.title}</h3><p>${markerInfo.description}</p>`)
+    );
+
+    const markerDiv = marker.getElement();
+    markerDiv.addEventListener('mouseenter', () => marker.togglePopup());
+    markerDiv.addEventListener('mouseleave', () => marker.togglePopup());
+
+    marker.addTo(map);
+  });
+
   return map;
 }
 
@@ -86,11 +133,6 @@ function addMarkers(map) {
       // create a HTML element for each feature
       const el = document.createElement('div');
       el.className = 'marker';
-
-      // make a marker for each feature and add to the map
-      // new mapboxgl.Marker(el)
-      //   .setLngLat(feature.geometry.coordinates)
-      //   .addTo(map);
 
       console.log('feature: ', feature);
 
@@ -213,6 +255,7 @@ function createElement(htmlString) {
   return div.firstElementChild;
 }
 function zoomIn(bbox, center) {
+  const map = wrapper.getMap();
   if (bbox) {
     map.fitBounds(bbox, {
       padding: 100,

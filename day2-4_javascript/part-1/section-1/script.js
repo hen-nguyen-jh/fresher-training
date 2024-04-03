@@ -1,18 +1,13 @@
-// Part 1 - Section 1
-
-// Declare variables
 let methodUsed = 'None';
 let numbersInput = '';
 let numbers = [1, 2, 2, 3, 4, 4, 4, 5, 6];
 let result = [];
 
-// Add event listeners
 const input = document.getElementById('numbersInput');
 input.addEventListener('input', onNumbersChange);
 const submit = document.getElementById('submit');
 submit.addEventListener('click', onSubmit);
 
-// Functions
 function removeDuplicateWithLoop(numbers) {
   methodUsed = 'With Loop';
   const result = [];
@@ -61,7 +56,6 @@ function render() {
 }
 
 function onNumbersChange(event) {
-  console.log('changed!');
   numbersInput = event.target.value;
   numbers = [];
 
