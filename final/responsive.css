@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+@media screen and (min-width: 320px) {
+  #project-gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (min-width: 425px) {
+  :root {
+    --padding: 32px;
+  }
+
+  #project-overview {
+    flex-direction: row;
+    gap: 4px;
+  }
+  #project-overview > .figure-container {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+  }
+  #project-overview > .divider {
+    height: auto;
+    width: 1px;
+  }
+  #project-overview > .figure-container > .label {
+    font-size: 16px;
+  }
+
+  #man-in-black-image-container > img {
+    width: 322.25px;
+  }
+
+  #man-in-black-image-container > .circle.shadow {
+    mask-position: 51% 100%;
+    mask-size: 322.25px auto;
+  }
+
+  #project-gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  :root {
+    --padding: 40px;
+  }
+
+  #man-in-black-image-container > .shadow {
+    display: none;
+  }
+
+  .skill-scores-container {
+    display: flex;
+    justify-content: center;
+    gap: var(--padding);
+    flex-wrap: wrap;
+  }
+
+  .skill-score-item {
+    width: calc(100% / 3 - var(--padding));
+  }
+
+  #hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .md_items-start {
+    align-items: start;
+  }
+
+  #hero-title {
+    text-align: start;
+    text-wrap: nowrap;
+  }
+
+  #project-overview > .figure-container {
+    padding-right: 12px;
+  }
+
+  #section-3__content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+  #about-me__text {
+    align-items: start;
+  }
+
+  footer section.contact-container {
+    flex-direction: row;
+    gap: 40px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  :root {
+    --padding: 64px;
+  }
+
+  button {
+    padding: 12px 40px 12px 40px;
+    gap: 10px;
+    border-radius: 8px;
+    opacity: 0px;
+
+    font-size: 16px;
+  }
+
+  .button {
+    border-radius: 6px;
+    padding: 12px 40px;
+  }
+
+  #hamburger-button {
+    display: none;
+  }
+
+  nav {
+    display: block;
+  }
+
+  nav {
+    position: relative;
+  }
+  nav > ul {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    display: flex;
+    gap: 32px;
+  }
+
+  nav > ul > li > a {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.03em;
+    text-align: justify;
+    text-wrap: nowrap;
+
+    color: var(--dark-gray);
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+  nav > ul > li.active > a {
+    color: var(--primary);
+  }
+
+  nav > ul > li {
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: 0.3s;
+  }
+  nav > ul > li:hover {
+    background-color: var(--background-hover);
+    color: var(--light);
+    translate: 0 -4px;
+  }
+
+  #hero {
+    width: 100%;
+  }
+  #project-overview {
+    gap: 32px;
+  }
+  #project-gallery {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .skill-scores-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    justify-items: center;
+  }
+
+  #project-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    width: 100%;
+
+    overflow: visible;
+
+    scroll-snap-type: none;
+    scroll-behavior: unset;
+  }
+  #project-list > li {
+    scroll-snap-type: none;
+  }
+
+  #man-in-black-image-container {
+    aspect-ratio: unset;
+  }
+
+  #contact-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+  #contact-form > button {
+    grid-area: 4 / 2 / 5/ 3;
+    justify-self: end;
+
+    padding: 12px 40px 12px 40px;
+  }
+  footer > .border-top {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  :root {
+    --padding: 80px;
+  }
+
+  nav > ul > li > button {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 2560px) {
+  :root {
+    --padding: 200px;
+  }
+
+  #hero {
+    justify-content: center;
+  }
+}
