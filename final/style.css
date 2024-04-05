@@ -148,7 +148,6 @@ header {
   padding: min(var(--padding), 20px) var(--padding);
   background: var(--background);
   z-index: 1;
-  /* box-shadow: 4px 0 4px rgba(255, 255, 255, 0.2); */
 }
 
 header > button {
@@ -749,6 +748,10 @@ svg.circle .progress-segment {
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
+
+  min-width: 284px;
+  scroll-snap-align: start;
+  vertical-align: baseline;
 }
 
 #project-list > li {
@@ -803,12 +806,6 @@ svg.circle .progress-segment {
 
 ::-webkit-scrollbar {
   display: none;
-}
-
-#project-list > li {
-  min-width: 284px;
-  scroll-snap-align: start;
-  vertical-align: baseline;
 }
 
 #project-list > li > img {
