@@ -1,3 +1,25 @@
+// hamburger button
+const nav = document.querySelector('nav.mobile');
+const hamburgerButton = document.querySelector('#hamburger-button');
+hamburgerButton.addEventListener('click', () => {
+  if (nav.style.display === 'none') {
+    nav.style.display = 'block';
+    nav.classList.add('show');
+  } else {
+    nav.style.display = 'none';
+    nav.classList.remove('show');
+  }
+});
+
+document.addEventListener('click', (event) => {
+  if (!nav.contains(event.target) && !hamburgerButton.contains(event.target)) {
+    nav.classList.remove('show');
+    setTimeout(() => {
+      nav.style.display = 'none';
+    }, 300);
+  }
+});
+
 // liElements
 const liElements = document.querySelectorAll('nav > ul > li');
 
@@ -10,6 +32,16 @@ liElements.forEach((liElement) => {
       li.classList.remove('active');
     }
     liElement.classList.add('active');
+  });
+});
+
+const mobileLiElements = document.querySelectorAll('nav.mobile > ul > li');
+mobileLiElements.forEach((element) => {
+  element.addEventListener('click', () => {
+    nav.classList.remove('show');
+    setTimeout(() => {
+      nav.style.display = 'none';
+    }, 300);
   });
 });
 
@@ -39,8 +71,8 @@ const progressItems = document.querySelectorAll('.progress-segment');
 console.log(progressItems);
 progressItems.forEach((scoreItem) => io.observe(scoreItem));
 
-io.observe(document.getElementById('section-2'));
-io.observe(document.getElementById('section-3__content'));
+io.observe(document.getElementById('services'));
+io.observe(document.getElementById('about-me__content'));
 
 const projectItems = document.querySelectorAll('#project-list > li');
 

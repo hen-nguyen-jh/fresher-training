@@ -21,34 +21,55 @@
 
     <a href="#" class="logo">LOGO</a>
 
-    <nav>
+    <nav class="mobile">
       <ul>
         <li class="active">
-          <a href="#">Home</a>
+          <a href="#home">Home</a>
         </li>
         <li>
-          <a href="#">Services</a>
+          <a href="#services">Services</a>
         </li>
         <li>
-          <a href="#">About me</a>
+          <a href="#about-me">About me</a>
         </li>
         <li>
-          <a href="#">Portfolio</a>
+          <a href="#portfolio">Portfolio</a>
         </li>
         <li>
-          <a href="#">Contact me</a>
+          <a href="#contact-me">Contact me</a>
         </li>
       </ul>
     </nav>
 
-    <button class="button button-primary">Hire Me</button>
+
+    <nav class="desktop">
+      <ul>
+        <li class="active">
+          <a href="#home">Home</a>
+        </li>
+        <li>
+          <a href="#services">Services</a>
+        </li>
+        <li>
+          <a href="#about-me">About me</a>
+        </li>
+        <li>
+          <a href="#portfolio">Portfolio</a>
+        </li>
+        <li>
+          <a href="#contact-me">Contact me</a>
+        </li>
+      </ul>
+    </nav>
+
+    <button class="button-primary">Hire Me</button>
 
   </header>
-  <main class="common-container gap-100">
+  <main id="home" class="common-container gap-100">
     <section class="common-container gap-24" id="hero">
-      <div class="common-container gap-50 md_items-start">
-        <div class="common-container gap-40 md_items-start">
-          <div class="common-container gap-14 md_items-start">
+      <div class="common-container gap-50 md_gap-80 md_items-start md_justify-start h-full">
+        <div class="common-container gap-40 md_gap-60 md_items-start">
+          <div id="weird-svg-container" class="common-container gap-14 md_gap-24 md_items-start">
 
             <div class="common-container gap-24 md_items-start">
               <div class="common-container gap-10 md_items-start">
@@ -71,8 +92,8 @@
           </div>
 
           <div id="hire-me-and-download-cv-container">
-            <button class="button button-primary">Hire me</button>
-            <button class="button button-outline">Download CV</button>
+            <button class="button-primary">Hire me</button>
+            <button class="button-outline">Download CV</button>
           </div>
         </div>
 
@@ -102,61 +123,80 @@
       </div>
     </section>
 
-    <section id="section-2" class="section">
+    <section id="services" class="common-container gap-24 md_gap-80">
 
       <section class="common-container gap-14">
         <p class="section-title">Services</p>
-        <p class="section-snippet">Lorem ipsum dolor sit amet consectetur.</p>
+        <p class="section-snippet">Lorem ipsum dolor sit amet consectetur. <span class="hidden-content">
+            Imperdiet convallis blandit felis ligula aliquam
+          </span></p>
       </section>
 
       <section id="project-gallery" class="section-content">
         <div class="project-card common-container">
-          <img src="assets/icons/icon-app.svg" alt="App">
-          <p class="project-card__name">App Design</p>
-          <p class="project-card__snippet">Lorem ipsum dolor sit amet Imperdiet.</p>
+          <div class="common-container gap-8 md_gap-16">
+            <img src="assets/icons/icon-app.svg" alt="App">
+            <p class="project-card__name">App Design</p>
+          </div>
+
+          <p class="project-card__snippet">Lorem ipsum dolor sit amet Imperdiet.
+            <span class="hidden-content">Imperdiet Lorem ipsum dolor sit amet consectetur</span>
+          </p>
         </div>
 
         <div class="project-card common-container">
           <img src="assets/icons/icon-app.svg" alt="App">
           <p class="project-card__name">App Design</p>
-          <p class="project-card__snippet">Lorem ipsum dolor sit amet Imperdiet.</p>
+          <p class="project-card__snippet">Lorem ipsum dolor sit amet Imperdiet.
+            <span class="hidden-content">Imperdiet Lorem ipsum dolor sit amet consectetur
+            </span>
+          </p>
         </div>
 
         <div class="project-card common-container">
           <img src="assets/icons/icon-app.svg" alt="App">
           <p class="project-card__name">App Design</p>
-          <p class="project-card__snippet">Lorem ipsum dolor sit amet Imperdiet.</p>
+          <p class="project-card__snippet">Lorem ipsum dolor sit amet Imperdiet.
+            <span class="hidden-content">Imperdiet Lorem ipsum dolor sit amet consectetur
+            </span>
+          </p>
         </div>
 
         <div class="project-card common-container">
           <img src="assets/icons/icon-app.svg" alt="App">
           <p class="project-card__name">App Design</p>
-          <p class="project-card__snippet">Lorem ipsum dolor sit amet Imperdiet.</p>
+          <p class="project-card__snippet">Lorem ipsum dolor sit amet Imperdiet.
+            <span class="hidden-content">Imperdiet Lorem ipsum dolor sit amet consectetur</span>
+          </p>
         </div>
 
         <div class="project-card common-container">
           <img src="assets/icons/icon-app.svg" alt="App">
           <p class="project-card__name">App Design</p>
-          <p class="project-card__snippet">Lorem ipsum dolor sit amet Imperdiet.</p>
+          <p class="project-card__snippet">Lorem ipsum dolor sit amet Imperdiet.
+            <span class="hidden-content">Imperdiet Lorem ipsum dolor sit amet consectetur</span>
+          </p>
         </div>
 
         <div class="project-card common-container">
           <img src="assets/icons/icon-app.svg" alt="App">
           <p class="project-card__name">App Design</p>
-          <p class="project-card__snippet">Lorem ipsum dolor sit amet Imperdiet.</p>
+          <p class="project-card__snippet">Lorem ipsum dolor sit amet Imperdiet.
+            <span class="hidden-content">Imperdiet Lorem ipsum dolor sit amet consectetur</span>
+          </p>
         </div>
       </section>
 
     </section>
 
-    <section id="section-3" class="common-container gap-40">
+    <section id="about-me" class="common-container gap-40">
 
       <section class="common-container gap-14">
         <p class="section-title">About me</p>
         <p class="section-snippet">User Interface and User Experience and Also</p>
       </section>
 
-      <section id="section-3__content" class="common-container gap-34">
+      <section id="about-me__content" class="common-container gap-34">
 
         <section id="about-me__photo-container">
           <div></div>
@@ -171,7 +211,12 @@
             virtuoso pianists, they compose symphonies of logic, their minds a labyrinth of algorithms and solutions.
             Their canvas is a screen, a vast expanse where lines of code dance in intricate patterns, weaving the
             fabric
-            of programs and applications.</p>
+            of programs and applications. <span class="hidden-content">
+              Each keystroke is a brushstroke, crafting intricate architectures and breathing life into innovative
+              designs.In this digital atelier, they don the mantle of problem solvers, confronting bugs and glitches
+              like valiant knights in an ever-evolving quest for perfection. Debugging becomes a noble pursuit,
+              unraveling the mysteries hidden within the tangled webs of code. designs.In this digital atelier.
+            </span></p>
 
           <button class="button button-primary" id="custom-download-cv"><img src="assets/icons/icon-download.svg"
               alt="Download">
@@ -262,17 +307,17 @@
 
     </section>
 
-    <section id="section-4" style="width: 100%;">
+    <section id="portfolio" style="width: 100%;">
       <section class="common-container gap-34">
         <section class="common-container gap-24">
           <p class="section-title">Portfolio</p>
           <ul id="portfolio-list">
-            <li class="active"><button class="button">All</button></li>
-            <li><button class="button">Website Design</button></li>
-            <li><button class="button">App Desktop</button></li>
-            <li><button class="button">Landing Page Design</button></li>
-            <li><button class="button">App Mobile Design</button></li>
-            <li><button class="button">Braiding</button></li>
+            <li class="active"><button>All</button></li>
+            <li><button>Website Design</button></li>
+            <li><button>App Desktop</button></li>
+            <li><button>Landing Page Design</button></li>
+            <li><button>App Mobile Design</button></li>
+            <li><button>Braiding</button></li>
           </ul>
         </section>
 
@@ -340,14 +385,14 @@
       </section>
     </section>
 
-    <section id="section-5" class="common-container gap-40">
+    <section id="contact-me" class="common-container gap-40">
 
       <section class="common-container gap-18">
         <p class="section-title">Contact me</p>
         <p class="section-snippet">Cultivating Connections: Reach Out and Connect with Me</p>
       </section>
 
-      <section id="contact-form" class="common-container gap-16">
+      <section id="contact-form" class="common-container gap-16 md_gap-30">
         <input type="text" name="name" placeholder="Name">
         <input type="email" name="email" placeholder="Email">
         <input type="tel" name="phoneNumber" placeholder="Phone Number">
@@ -361,15 +406,15 @@
           </select>
         </div>
         <input type="text" name="timeline" placeholder="Timeline">
-        <textarea name="productDetails" rows="6" placeholder="Product Details..."></textarea>
+        <textarea name="productDetails" rows="5" placeholder="Product Details..."></textarea>
         <button type="submit" class="button button-outline">Send</button>
       </section>
 
     </section>
   </main>
 
-  <footer class="common-container gap-30">
-    <section class="common-container gap-30">
+  <footer class="common-container gap-30 md_gap-50">
+    <section class="common-container gap-30 md_gap-50">
       <a href="#" class="logo">LOGO</a>
       <ul class="links">
         <li>
@@ -389,7 +434,7 @@
         </li>
       </ul>
     </section>
-    <section class="common-container gap-30">
+    <section class="common-container gap-30 md_gap-50">
       <ul class="brand-list">
         <li>
           <a href="#">

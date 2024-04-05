@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
 @media screen and (min-width: 320px) {
   #project-gallery {
@@ -8,22 +8,26 @@
 
 @media screen and (min-width: 425px) {
   :root {
-    --padding: 32px;
+    --padding: 24px;
   }
 
   #project-overview {
     flex-direction: row;
     gap: 4px;
+    text-wrap: nowrap;
   }
+
   #project-overview > .figure-container {
     flex-direction: column;
     justify-content: space-between;
     align-items: start;
   }
+
   #project-overview > .divider {
     height: auto;
     width: 1px;
   }
+
   #project-overview > .figure-container > .label {
     font-size: 16px;
   }
@@ -48,6 +52,17 @@
     --padding: 40px;
   }
 
+  main {
+    padding-top: 160px;
+    gap: 150px;
+    padding-bottom: 150px;
+  }
+
+  svg.circle {
+    width: 100px; /* Adjust size as needed */
+    height: 100px;
+  }
+
   #man-in-black-image-container > .shadow {
     display: none;
   }
@@ -63,9 +78,21 @@
     width: calc(100% / 3 - var(--padding));
   }
 
+  .skill-score-item__score {
+    font-size: 30px;
+  }
+
+  .skill-score-item__name {
+    font-size: 24px;
+  }
+
   #hero {
     display: grid;
     grid-template-columns: 1fr 1fr;
+  }
+
+  .md_justify-start {
+    justify-content: start;
   }
 
   .md_items-start {
@@ -73,18 +100,27 @@
   }
 
   #hero-title {
-    text-align: start;
-    text-wrap: nowrap;
+    font-size: 70px;
+    font-weight: 900;
+    line-height: 84px;
+    letter-spacing: 0.03em;
+    text-align: left;
+  }
+
+  #project-overview {
+    width: unset;
   }
 
   #project-overview > .figure-container {
     padding-right: 12px;
   }
 
-  #section-3__content {
+  #about-me__content {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 1.8fr;
+    column-gap: 100px;
   }
+
   #about-me__text {
     align-items: start;
   }
@@ -100,13 +136,34 @@
     --padding: 64px;
   }
 
+  body {
+    font-size: 20x;
+  }
+
+  #contact-me {
+    width: 88%;
+  }
+
+  .hidden-content {
+    display: unset;
+  }
+
+  header {
+    padding-top: 57px;
+  }
+  header .logo {
+    font-family: K2D;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 39px;
+    letter-spacing: 0.03em;
+    text-align: justified;
+  }
+
   button {
     padding: 12px 40px 12px 40px;
-    gap: 10px;
     border-radius: 8px;
-    opacity: 0px;
-
-    font-size: 16px;
+    font-size: 20px;
   }
 
   .button {
@@ -118,24 +175,23 @@
     display: none;
   }
 
-  nav {
+  nav.desktop {
     display: block;
-  }
-
-  nav {
-    position: relative;
-  }
-  nav > ul {
     position: absolute;
     left: 50%;
-    top: 50%;
-    translate: -50% -50%;
+    translate: -50% 0;
+  }
+
+  nav.desktop > ul {
     display: flex;
     gap: 32px;
   }
 
-  nav > ul > li > a {
-    font-size: 16px;
+  nav.desktop {
+    font-size: 20px;
+  }
+
+  nav.desktop > ul > li > a {
     font-weight: 500;
     line-height: 24px;
     letter-spacing: 0.03em;
@@ -147,30 +203,41 @@
     transition: 0.3s;
   }
 
-  nav > ul > li.active > a {
+  nav.desktop > ul > li.active > a {
     color: var(--primary);
   }
 
-  nav > ul > li {
+  nav.desktop > ul > li {
     padding: 8px 12px;
     border-radius: 8px;
     transition: 0.3s;
   }
-  nav > ul > li:hover {
+
+  nav.desktop > ul > li:hover {
     background-color: var(--background-hover);
     color: var(--light);
     translate: 0 -4px;
   }
 
+  header button {
+    font-size: 16px;
+  }
+
   #hero {
     width: 100%;
   }
+
   #project-overview {
     gap: 32px;
   }
+
   #project-gallery {
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 40px;
+  }
+
+  #project-gallery > div {
+    padding: 34px 30px;
   }
 
   .skill-scores-container {
@@ -190,12 +257,28 @@
     scroll-snap-type: none;
     scroll-behavior: unset;
   }
+
   #project-list > li {
     scroll-snap-type: none;
+    font-weight: 700;
+    line-height: 25.6px;
+    letter-spacing: 0.03em;
+    text-align: justify;
+  }
+
+  #project-list > li > .info > .name,
+  #project-list > li > .info > .categories {
+    font-size: 16px;
   }
 
   #man-in-black-image-container {
     aspect-ratio: unset;
+  }
+
+  #about-me__text > p {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 38px;
   }
 
   #contact-form {
@@ -203,14 +286,89 @@
     grid-template-columns: 1fr 1fr;
     align-items: start;
   }
+
   #contact-form > button {
     grid-area: 4 / 2 / 5/ 3;
     justify-self: end;
 
     padding: 12px 40px 12px 40px;
   }
+
   footer > .border-top {
     width: 50%;
+  }
+
+  footer .contact {
+    font-size: 20px;
+  }
+
+  .md_gap-16 {
+    gap: 16px;
+  }
+
+  .md_gap-24 {
+    gap: 24px;
+  }
+
+  .md_gap-30 {
+    gap: 30px;
+  }
+
+  .md_gap-50 {
+    gap: 50px;
+  }
+
+  .md_gap-60 {
+    gap: 60px;
+  }
+
+  .md_gap-80 {
+    gap: 80px;
+  }
+
+  #project-gallery .project-card {
+    gap: 34px;
+  }
+
+  #project-gallery .project-card img {
+    width: 58.27px;
+    height: 55.58px;
+  }
+
+  #project-gallery .project-card .project-card__name {
+    font-size: 24px;
+  }
+
+  #project-gallery .project-card .project-card__snippet {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 32px;
+    letter-spacing: 0.03em;
+    text-align: center;
+  }
+
+  .section-title {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 48px;
+    letter-spacing: 0.03em;
+    text-align: justify;
+  }
+
+  .section-snippet {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 32px;
+    letter-spacing: 0.03em;
+    text-align: justify;
+  }
+
+  #project-overview > .figure-container > .label {
+    font-size: 20px;
+  }
+
+  #portfolio-list > li > button {
+    font-size: 16px;
   }
 }
 
@@ -219,7 +377,41 @@
     --padding: 80px;
   }
 
-  nav > ul > li > button {
+  main {
+    padding-top: 240px;
+  }
+
+  #hero
+    > div.common-container.gap-50.md_items-start.md_justify-start.h-full
+    > div
+    > div.common-container.gap-14.md_items-start
+    > div
+    > div
+    > p:nth-child(1) {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 28.8px;
+    letter-spacing: 0.03em;
+    text-align: left;
+  }
+
+  #hero-title {
+    font-size: 70px;
+    font-weight: 900;
+    line-height: 84px;
+    letter-spacing: 0.03em;
+    text-align: left;
+  }
+
+  #john-doe-text {
+    font-size: 28px;
+  }
+
+  nav.desktop > ul > li > button {
+    font-size: 20px;
+  }
+
+  footer ul.links > li > a {
     font-size: 20px;
   }
 }
