@@ -762,10 +762,6 @@ svg.circle .progress-segment {
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
-
-  min-width: 284px;
-  scroll-snap-align: start;
-  vertical-align: baseline;
 }
 
 #project-list > li {
@@ -781,6 +777,10 @@ svg.circle .progress-segment {
   translate: 0 10px;
   transition: 0.3s;
   border: 1px solid transparent;
+
+  min-width: 284px;
+  scroll-snap-align: start;
+  vertical-align: baseline;
 }
 
 #project-list > li.show {

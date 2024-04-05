@@ -277,7 +277,7 @@
   }
 
   #man-in-black-image-container {
-    aspect-ratio: unset;
+    aspect-ratio: 4 / 5;
   }
 
   #about-me__text > p {
