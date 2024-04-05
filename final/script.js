@@ -76,9 +76,4 @@ io.observe(document.getElementById('about-me__content'));
 
 const projectItems = document.querySelectorAll('#project-list > li');
 
-let delay = 0;
-projectItems.forEach((projectItem) => {
-  io.observe(projectItem);
-  projectItem.style.transitionDelay = `${delay}s`;
-  delay += 0.1;
-});
+projectItems.forEach((projectItem) => io.observe(projectItem));
