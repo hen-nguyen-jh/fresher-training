@@ -19,7 +19,7 @@
 
     let numbers = input.value.split(',').map((num) => parseInt(num));
 
-    const { highestCount, allHighest, countObj } = findHighest(numbers);
+    const { highestCount, allHighest } = findHighest(numbers);
 
     // Render
     const displayContainer = document.getElementById('displays-container');
@@ -39,18 +39,14 @@
   });
 
   function findHighest(numbers) {
-    let highest;
-    let highestCount;
     const countObj = {};
 
-    highest = numbers[0];
-    highestCount = 1;
+    let highestCount = 1;
     countObj[numbers[0]] = 1;
 
     for (let i = 1; i < numbers.length; i++) {
       countObj[numbers[i]] = (countObj[numbers[i]] || 0) + 1;
       if (countObj[numbers[i]] > highestCount) {
-        highest = numbers[i];
         highestCount = countObj[numbers[i]];
       }
     }

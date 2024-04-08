@@ -8,46 +8,63 @@ export class Question {
       }) || [];
     this.previousAnswer = previousAnswer || null;
   }
+
   addAnswer(answer) {
     if (answer) {
-      answer.question = this;
+      answer.previousQuestion = this;
       this.answers.push(answer);
     }
   }
+
   removeAnswer(answer) {
     if (answer) {
-      this.answers.splice(this.answers.indexOf(answer), 1);
+      this.answers = this.answers.filter((a) => a !== answer);
     }
   }
+
   selfRemove() {
-    this.answer.removeNext();
+    this.answers.forEach((answer) => {
+      answer.selfRemove();
+    });
+    this.previousAnswer.nextQuestion = null;
+    delete this;
   }
+
   get previousQuestion() {
-    return this.answer?.question || null;
+    return this.previousAnswer?.previousQuestion || null;
   }
+
   static create(question, answers, previousAnswer) {
     return new Question(question, answers, previousAnswer);
   }
 }
 
 export class Answer {
-  constructor(value, nextQuestion, parentQuestion) {
+  constructor(value, nextQuestion, previousQuestion) {
     this.value = value;
     this.nextQuestion = nextQuestion || null;
-    this.question = parentQuestion || null;
+    this.previousQuestion = previousQuestion || null;
   }
 
-  addNext(question) {
-    question.answer = this;
+  addNextQuestion(question) {
+    question.previousAnswer = this;
     this.nextQuestion = question || null;
   }
-  removeNext() {
+
+  removeNextQuestion() {
+    this.nextQuestion.selfRemove();
     this.nextQuestion = null;
   }
+
   selfRemove() {
-    this.question.removeAnswer(this);
+    if (this.nextQuestion) {
+      this.nextQuestion.selfRemove();
+    }
+    this.previousQuestion.removeAnswer(this);
+    delete this;
   }
-  static create(answer, nextQuestion, parentQuestion) {
-    return new Answer(answer, nextQuestion, parentQuestion);
+
+  static create(answer, nextQuestion, previousQuestion) {
+    return new Answer(answer, nextQuestion, previousQuestion);
   }
 }

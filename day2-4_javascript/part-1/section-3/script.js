@@ -302,7 +302,7 @@ import { Answer, Question } from './lib.js';
         }
 
         const question = Question.create(newQuestionInput.value);
-        answer.addNext(question);
+        answer.addNextQuestion(question);
 
         render();
       });
