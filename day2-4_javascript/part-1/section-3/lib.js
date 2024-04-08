@@ -1,99 +1,103 @@
+import { generateRandomId } from './utils.js';
+
+export class Tree {
+  root = null;
+
+  initTree(question) {
+    this.root = question;
+  }
+
+  delete() {
+    if (this.root) {
+      this.root.delete();
+      this.root = null;
+    }
+  }
+}
+
 export class Question {
-  constructor(value, answers, previousAnswer) {
+  value = '';
+  id = '';
+  answers = [];
+  previousAnswer = null;
+
+  constructor(
+    value = 'Default question',
+    id = generateRandomId(),
+    previousAnswer = null
+  ) {
     this.value = value;
-    this.answers =
-      answers?.map((answer) => {
-        answer.question = this;
-        return answer;
-      }) || [];
-    this.previousAnswer = previousAnswer || null;
+    this.id = id;
+    this.previousAnswer = previousAnswer;
   }
 
   addAnswer(answer) {
-    if (answer) {
-      answer.previousQuestion = this;
-      this.answers.push(answer);
-    }
-  }
-
-  getAnswer(index) {
-    if (index < 0 || index >= this.answers.length) {
-      throw new Error('Invalid index');
-    }
-
-    return this.answers[index] || null;
-  }
-
-  removeAnswerFromListByIndex(index) {
-    const answer = this.getAnswer(index);
-    this.answers = this.answers.filter((a) => a !== answer);
-    return answer;
-  }
-
-  removeAnswerFromList(answer) {
     if (!answer) {
       throw new Error('Invalid answer');
     }
-
-    this.answers = this.answers.filter((a) => a !== answer);
-    return answer;
-  }
-
-  removeAnswerByIndex(index) {
-    const answer = this.removeAnswerFromListByIndex(index);
-    answer.selfRemove();
+    this.answers.push(answer);
   }
 
   removeAnswer(answer) {
-    this.removeAnswerFromList(answer);
-    answer.selfRemove();
+    if (!answer) {
+      throw new Error('Invalid answer');
+    }
+    this.answers = this.answers.filter((a) => a.id !== answer.id);
   }
 
-  selfRemove() {
-    this.answers.forEach((answer) => {
-      answer.selfRemove();
-    });
-    this.previousAnswer.nextQuestion = null;
-    delete this;
-  }
-
-  get previousQuestion() {
-    return this.previousAnswer?.previousQuestion || null;
-  }
-
-  static create(question, answers, previousAnswer) {
-    return new Question(question, answers, previousAnswer);
+  delete() {
+    if (this.answers) {
+      console.log('deleting answers...');
+      this.answers.forEach((a) => a.delete());
+    }
+    if (this.previousAnswer) {
+      console.log('deleting question...');
+      const previous = this.previousAnswer;
+      previous.nextQuestion = null;
+    }
   }
 }
 
 export class Answer {
-  constructor(value, nextQuestion, previousQuestion) {
+  value = '';
+  id = '';
+  previousQuestion = null;
+  nextQuestion = null;
+
+  constructor(
+    value = 'Default answer',
+    id = generateRandomId(),
+    previousQuestion = null
+  ) {
     this.value = value;
-    this.nextQuestion = nextQuestion || null;
-    this.previousQuestion = previousQuestion || null;
+    this.id = id;
+    this.previousQuestion = previousQuestion;
   }
 
-  addNextQuestion(question) {
-    question.previousAnswer = this;
-    this.nextQuestion = question || null;
+  addQuestion(question) {
+    if (!question) {
+      throw new Error('Invalid question');
+    }
+    this.nextQuestion = question;
   }
 
-  removeNextQuestion() {
-    this.nextQuestion.selfRemove();
-    this.nextQuestion = null;
-  }
-
-  selfRemove() {
+  removeQuestion() {
     if (this.nextQuestion) {
-      this.nextQuestion.selfRemove();
+      this.nextQuestion.delete();
+      this.nextQuestion = null;
     }
-    if (this.previousQuestion) {
-      this.previousQuestion.removeAnswerFromList(this);
-    }
-    delete this;
   }
 
-  static create(answer, nextQuestion, previousQuestion) {
-    return new Answer(answer, nextQuestion, previousQuestion);
+  delete() {
+    if (this.nextQuestion) {
+      console.log('deleting next questions...');
+      this.nextQuestion.delete();
+      this.nextQuestion = null;
+    }
+    // console.log('previous question', this.previousQuestion);
+    if (this.previousQuestion) {
+      console.log('remove self from previous question...');
+      this.previousQuestion.removeAnswer(this);
+    }
   }
 }
