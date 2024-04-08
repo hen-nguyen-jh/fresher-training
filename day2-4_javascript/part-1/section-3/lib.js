@@ -16,10 +16,37 @@ export class Question {
     }
   }
 
-  removeAnswer(answer) {
-    if (answer) {
-      this.answers = this.answers.filter((a) => a !== answer);
+  getAnswer(index) {
+    if (index < 0 || index >= this.answers.length) {
+      throw new Error('Invalid index');
     }
+
+    return this.answers[index] || null;
+  }
+
+  removeAnswerFromListByIndex(index) {
+    const answer = this.getAnswer(index);
+    this.answers = this.answers.filter((a) => a !== answer);
+    return answer;
+  }
+
+  removeAnswerFromList(answer) {
+    if (!answer) {
+      throw new Error('Invalid answer');
+    }
+
+    this.answers = this.answers.filter((a) => a !== answer);
+    return answer;
+  }
+
+  removeAnswerByIndex(index) {
+    const answer = this.removeAnswerFromListByIndex(index);
+    answer.selfRemove();
+  }
+
+  removeAnswer(answer) {
+    this.removeAnswerFromList(answer);
+    answer.selfRemove();
   }
 
   selfRemove() {
@@ -60,7 +87,9 @@ export class Answer {
     if (this.nextQuestion) {
       this.nextQuestion.selfRemove();
     }
-    this.previousQuestion.removeAnswer(this);
+    if (this.previousQuestion) {
+      this.previousQuestion.removeAnswerFromList(this);
+    }
     delete this;
   }
 
