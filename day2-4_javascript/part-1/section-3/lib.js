@@ -9,8 +9,19 @@ export class Tree {
 
   delete() {
     if (this.root) {
-      this.root.delete();
       this.root = null;
+    }
+  }
+
+  find(id) {
+    if (!id) {
+      throw new Error('Invalid id');
+    }
+
+    if (this.root && this.root.id === id) {
+      return this.root;
+    } else {
+      return this.root.find(id);
     }
   }
 }
@@ -31,10 +42,28 @@ export class Question {
     this.previousAnswer = previousAnswer;
   }
 
+  find(id) {
+    if (this.id === id) {
+      return this;
+    }
+
+    for (const answer of this.answers) {
+      if (answer.id === id) {
+        return answer;
+      }
+
+      const found = answer.find(id);
+      if (found) {
+        return found;
+      }
+    }
+  }
+
   addAnswer(answer) {
     if (!answer) {
       throw new Error('Invalid answer');
     }
+    answer.previousQuestion = this;
     this.answers.push(answer);
   }
 
@@ -46,14 +75,8 @@ export class Question {
   }
 
   delete() {
-    if (this.answers) {
-      console.log('deleting answers...');
-      this.answers.forEach((a) => a.delete());
-    }
     if (this.previousAnswer) {
-      console.log('deleting question...');
-      const previous = this.previousAnswer;
-      previous.nextQuestion = null;
+      this.previousAnswer.nextQuestion = null;
     }
   }
 }
@@ -74,29 +97,30 @@ export class Answer {
     this.previousQuestion = previousQuestion;
   }
 
+  find(id) {
+    if (this.id === id) {
+      return this;
+    } else if (this.nextQuestion) {
+      return this.nextQuestion.find(id);
+    } else {
+      return null;
+    }
+  }
+
   addQuestion(question) {
     if (!question) {
       throw new Error('Invalid question');
     }
     this.nextQuestion = question;
+    question.previousAnswer = this;
   }
 
   removeQuestion() {
-    if (this.nextQuestion) {
-      this.nextQuestion.delete();
-      this.nextQuestion = null;
-    }
+    this.nextQuestion = null;
   }
 
   delete() {
-    if (this.nextQuestion) {
-      console.log('deleting next questions...');
-      this.nextQuestion.delete();
-      this.nextQuestion = null;
-    }
-    // console.log('previous question', this.previousQuestion);
     if (this.previousQuestion) {
-      console.log('remove self from previous question...');
       this.previousQuestion.removeAnswer(this);
     }
   }
